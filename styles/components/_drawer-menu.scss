@@ -1,12 +1,12 @@
 .drawer-menu {
-  $drawer-menu-item-height:36px;
-  $drawer-menu-list : 8px;
-  $community-length : 14;
-  $store-length : 11;
-  $expert-length : 9;
+  $drawer-menu-item-height: 36px;
+  $drawer-menu-list: 8px;
+  $community-length: 14;
+  $store-length: 11;
+  $expert-length: 9;
 
   @function calculate-max-content-height($length) {
-    @return $drawer-menu-item-height * $length + $drawer-menu-list
+    @return $drawer-menu-item-height * $length + $drawer-menu-list;
   }
 
   &.is-active {
@@ -19,6 +19,7 @@
     &.is-community {
       .drawer-menu-content {
         max-height: calculate-max-content-height($community-length);
+      }
     }
     &.is-store {
       .drawer-menu-content {
@@ -94,5 +95,4 @@
       color: $red;
     }
   }
-}
 }
