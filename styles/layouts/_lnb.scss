@@ -1,0 +1,36 @@
+.lnb {
+  width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid $border;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &-list {
+    @include inline-flexbox(start);
+    white-space: nowrap;
+    position: relative;
+    left: -8px;
+  }
+
+  &-item {
+    &.is-active {
+      a {
+        color: $blue;
+        border-bottom: 2px solid $blue;
+      }
+    }
+
+    a {
+      @include inline-flexbox;
+      @include text-style(13, $dark);
+      height: 40px;
+      font-weight: 700;
+      padding: 10px 8px;
+    }
+    .ic-new {
+      color: $red;
+    }
+  }
+}
