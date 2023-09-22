@@ -2,7 +2,7 @@
   $grid-margin: $sm-margin + $gutter / 2;
 
   position: sticky;
-  top: $gnb-height-sm + $lnb-height-sm;
+  top: $gnb-height-sm + $lnb-height-sm - 1;
   background-color: $white;
   border-bottom: 1px solid $border;
   height: 40px;
