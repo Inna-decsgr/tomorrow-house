@@ -7,9 +7,11 @@
   z-index: $order-form-modal-level;
   padding-top: 16px;
   border-radius: 12px 12px 0 0;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, .15);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
   display: none;
-
+  max-height: 75vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 
   &.is-open {
     display: block;
@@ -26,16 +28,23 @@
     margin-bottom: 8px;
   }
 
+  .order-summary {
+    margin-bottom: 48px + 4px * 2 + 16px;
+  }
+
   .button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     padding: 4px;
-    padding-top: 0;
+    width: 100%;
+    background-color: $white;
   }
 
   @include responsive(T) {
     padding-top: 32px;
   }
 }
-
 
 @keyframes modal-fade-in {
   0% {
