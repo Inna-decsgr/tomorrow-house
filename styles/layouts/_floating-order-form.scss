@@ -1,9 +1,12 @@
 .floating-order-form {
+  $global-header-height : $gnb-height-md + $lnb-height-md + $product-tab-height-md;
   @include flexbox(start, start);
+  position: sticky;
+  top: $global-header-height;
   flex-direction: column;
-
-  height: 700px; //TEMP
-
+  min-height: calc(100vh - #{$global-header-height + $global-footer-height});
+  max-height:  calc(100vh - #{$global-header-height});
+  padding: 24px 0;
 
   > * {
     width: 100%;
@@ -18,7 +21,6 @@
 
   .order-checkout {
     flex-grow: 1;
-    background-color: hotpink;
     overflow: auto;
 
     &::-webkit-scrollbar {
@@ -41,7 +43,6 @@
         }
       }
 
-
       &:hover {
         background-color: $background;
       }
@@ -52,5 +53,4 @@
       }
     }
   }
-
 }
