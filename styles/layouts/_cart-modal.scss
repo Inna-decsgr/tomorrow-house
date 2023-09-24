@@ -8,6 +8,11 @@
   width: calc(100% - #{$grid-margin} * 2);
   z-index: $cart-modal-level;
   max-width: 360px;
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
 
   .cart-title {
     @include text-style(16, $dark);
