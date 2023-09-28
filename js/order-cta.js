@@ -19,10 +19,12 @@ function closeOrderModal() {
 
 orderModalOverlay.addEventListener('click', closeOrderModal)
 
+  /*
 function toggleOrderCtaBookmark() {
   // 1. 버튼 is-active 클래스주기
   // 2. icon 클래스 변경 => ic-bookmark-filled
   // 3. 카운트 숫자 값을 변경
+
 
   const [icon, countSpan] = this.children
   const count = Number(countSpan.innerHTML.replaceAll(',', ''))
@@ -46,5 +48,26 @@ function toggleOrderCtaBookmark() {
 
   this.classList.toggle('is-active')
 }
+*/
 
-orderCtaBookMarkButton.addEventListener('click', toggleOrderCtaBookmark)
+orderCtaBookMarkButton.addEventListener('click', toggleOrderCtaBookmark);
+
+function toggleOrderCtaBookmark() {
+  const [icon, countSpan] = this.children;
+  const count = Number(countSpan.innerHTML.replaceAll(',', ''));
+
+  let newCount = count;
+
+  if(this.classList.contains('is-active')){
+    icon.setAttribute('class', 'ic-bookmark')
+    newCount = newCount - 1;
+  }else {
+    icon.setAttribute('class', 'ic-bookmark-filled');
+    newCount = newCount + 1;
+  }
+
+  countSpan.innerHTML = newCount.toLocaleString();
+  countSpan.setAttribute('aria-label', `북마크 ${newCount.toLocaleString()}회`)
+  this.classList.toggle('is-active');
+
+}
