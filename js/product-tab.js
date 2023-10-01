@@ -35,8 +35,6 @@ productTabButtonList.forEach((button) => {
   button.addEventListener('click', scrollToTabPanel)
 })
 
-// 사전정보: 각 tabPanel의 y축 위치(문서의 시작점에서부터 얼마나 아래에 있는지)
-// 요소의 y축 위치 = window.scrollY + element.getBoundingClientRect().top
 const productTabPanelIdList = [
   'product-spec',
   'product-review',
@@ -53,8 +51,6 @@ const productTabPanelList = productTabPanelIdList.map((panelId) => {
 const productTabPanelPositionMap = {}
 
 function detectTabPanelPosition() {
-  // 각각의 tabPanel의 y축 위치를 찾는다
-  // productTabPanelPositionMap에 그 값을 업데이트
   productTabPanelList.forEach((panel) => {
     const id = panel.getAttribute('id')
     const position = window.scrollY + panel.getBoundingClientRect().top
@@ -62,5 +58,38 @@ function detectTabPanelPosition() {
   })
 }
 
+function updateActiveTabOnScroll() {
+  // 스크롤 위치에 따라서 acticeTab 업데이트
+  // 1. 현재 유저가 얼마만큼 스크롤을 했느냐 => scrollY
+  // 2. 각 tabPanel y축 위치 => productTabPanelPositionMap
+
+  const scrolledAmount = window.scrollY + (window.innerWidth >= 768 ? TOP_HEADER_DESKTOP + 80 : TOP_HEADER_MOBILE + 8)
+
+  let newActiveTab
+
+  if (scrolledAmount >= productTabPanelPositionMap['product-recommendation']) {
+    newActiveTab = productTabButtonList[4]
+  } else if (scrolledAmount >= productTabPanelPositionMap['product-shipment']) {
+    newActiveTab = productTabButtonList[3]
+  }else if (scrolledAmount >= productTabPanelPositionMap['product-inquiry']) {
+    newActiveTab = productTabButtonList[2]
+  }else if (scrolledAmount >= productTabPanelPositionMap['product-review']) {
+    newActiveTab = productTabButtonList[1]
+  }else{
+    newActiveTab = productTabButtonList[0]
+  }
+
+  if(newActiveTab) {
+    newActiveTab = newActiveTab.parentNode
+
+    if(newActiveTab != currentActiveTab) {
+      newActiveTab.classList.add('is-active')
+      currentActiveTab.classList.remove('is-active')
+      currentActiveTab = newActiveTab
+    }
+  }
+}
+
 window.addEventListener('load', detectTabPanelPosition)
 window.addEventListener('resize', detectTabPanelPosition)
+window.addEventListener('scroll', updateActiveTabOnScroll)
