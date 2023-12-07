@@ -106,7 +106,6 @@ https://inna-decsgr.github.io/tomorrow-house/
 ```
 
 ### 3. Product-review
-<<<<<<< HEAD
 =======
 
 - 유저 이미지가 있는 경우, 사용자가 도움됨을 미체크, 도움됨 1+
