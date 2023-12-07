@@ -315,9 +315,6 @@ https://inna-decsgr.github.io/tomorrow-house/
 ```
 
 
-
->>>>>>> aaad2181f5341b1d5ff269e35fcbf734cf132433
-
 - 유저 이미지가 있는 경우, 사용자가 도움됨을 미체크, 도움됨 1+
 
 ```html
